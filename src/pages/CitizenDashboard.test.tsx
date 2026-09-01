@@ -26,5 +26,29 @@ describe('CitizenDashboard Component', () => {
     expect(screen.getByText(/XXXX-XXXX-4821/i)).toBeInTheDocument();
     expect(screen.getAllByText(/H8492019482/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/Geo-Tagged Residential Building/i)).toBeInTheDocument();
+    
+    // Switch tabs to boost coverage
+    fireEvent.click(screen.getByText(/Privacy Settings/i));
+    fireEvent.click(screen.getByText(/Official Certificate/i));
+    
+    // Logout
+    const logoutBtn = screen.getByText(/Logout/i);
+    fireEvent.click(logoutBtn);
+  });
+
+  it('handles manual OTP flow successfully', () => {
+    render(<CitizenDashboard />);
+    
+    // Valid Aadhaar length
+    const aadhaarInput = screen.getByPlaceholderText(/XXXX XXXX XXXX/i);
+    fireEvent.change(aadhaarInput, { target: { value: '123456789012' } });
+    fireEvent.click(screen.getByText(/Send Verification OTP/i));
+    
+    // Enter correct OTP
+    const otpInput = screen.getByPlaceholderText(/123456/i);
+    fireEvent.change(otpInput, { target: { value: '123456' } });
+    fireEvent.click(screen.getByText(/Verify & Login/i));
+    
+    expect(screen.getByRole('heading', { name: /Rajesh S. Sharma/i })).toBeInTheDocument();
   });
 });

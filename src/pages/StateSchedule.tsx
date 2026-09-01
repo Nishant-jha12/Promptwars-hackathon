@@ -83,8 +83,11 @@ export default function StateSchedule() {
   const [locationLoading, setLocationLoading] = useState(false);
   const [locationError, setLocationError] = useState('');
 
-  const filteredStates = allStates.filter(state => 
-    state.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredStates = React.useMemo(() => 
+    allStates.filter(state => 
+      state.toLowerCase().includes(searchTerm.toLowerCase())
+    ),
+    [searchTerm]
   );
 
   const handleFindLocation = () => {

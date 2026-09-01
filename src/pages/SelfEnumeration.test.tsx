@@ -29,19 +29,37 @@ describe('SelfEnumeration Wizard', () => {
     // Step 1: Household Details
     expect(screen.getByText(/Building Material/i)).toBeInTheDocument();
     
+    // Fill out Step 1 to get coverage on handlers
+    const selects = screen.getAllByRole('combobox');
+    fireEvent.change(selects[0], { target: { value: 'Maharashtra' } });
+    fireEvent.change(selects[1], { target: { value: 'Owned' } });
+    fireEvent.change(selects[2], { target: { value: 'Concrete' } });
+
     // Click Next
     const nextBtn1 = screen.getByText('Next');
     fireEvent.click(nextBtn1);
-        // Step 2: Household Members is now replaced with the summary capture fields.
-    // In our refactored wizard, Step 2 now contains the Caste Selection.
-    expect(screen.getAllByLabelText(/SC \/ ST \/ Other Selection/i)[0]).toBeInTheDocument();
     
-    // We can just click Next
+    // Step 2: Demographics
+    expect(screen.getAllByLabelText(/SC \/ ST \/ Other Selection/i)[0]).toBeInTheDocument();
+    // Fill out step 2
+    const inputs = screen.getAllByRole('spinbutton');
+    if (inputs.length > 0) {
+      fireEvent.change(inputs[0], { target: { value: '4' } });
+    }
+    
+    // Click Next
     const nextBtn2 = screen.getByText('Next');
     fireEvent.click(nextBtn2);
     
     // Step 3: Review
     expect(screen.getByText(/Review & Submit/i)).toBeInTheDocument();
+    
+    // Test the "Back" button to get branch coverage
+    const backBtn = screen.getByText('Back');
+    fireEvent.click(backBtn);
+    expect(screen.getAllByLabelText(/SC \/ ST \/ Other Selection/i)[0]).toBeInTheDocument();
+    fireEvent.click(screen.getByText('Next')); // Go to Review again
+    
     const submitBtn = screen.getByText(/Submit & Generate ID/i);
     fireEvent.click(submitBtn);
     
@@ -49,7 +67,6 @@ describe('SelfEnumeration Wizard', () => {
     expect(screen.getByText(/Self-Enumeration Complete!/i)).toBeInTheDocument();
     
     // Find the generated SE ID
-    // It should be 11 characters starting with H
     const generatedIdElement = screen.getByText(/^H\d{10}$/);
     expect(generatedIdElement).toBeInTheDocument();
     expect(generatedIdElement.textContent).toMatch(/^H\d{10}$/);
