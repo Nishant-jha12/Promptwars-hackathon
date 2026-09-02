@@ -96,7 +96,7 @@ function App() {
             </div>
             
             <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
-              <p>Unofficial Prototype • Built for PromptWars x ADYPU</p>
+              <p>Census Sahayak 2027 &nbsp;&bull;&nbsp; Digital India</p>
               <div className="flex items-center gap-6 font-bold text-slate-300">
                 <span>Census Helpline: <span className="text-emerald-500">1855</span></span>
                 <span>Cybercrime Helpline: <span className="text-amber-500">1930</span></span>

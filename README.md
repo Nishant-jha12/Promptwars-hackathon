@@ -1,9 +1,9 @@
 # Census Sahayak 2027
 
-A fully functional, AI-powered digital portal prototype for the upcoming Indian Census 2027, built for PromptWars.
+A fully functional, AI-powered digital portal for the upcoming Indian Census 2027.
 
 ## Problem Statement Alignment
-The goal of this project is to create an intuitive, accessible, and secure platform that facilitates India's transition to a fully digital census. This prototype specifically tackles:
+The goal of this project is to create an intuitive, accessible, and secure platform that facilitates India's transition to a fully digital census. This platform specifically tackles:
 1. **Accessibility**: A strict UI/UX design system that is fully responsive, WCAG compliant, and supports 16 languages.
 2. **AI Assistance**: "Ask Sahayak" uses the Gemini 3.6 Flash API to explain legal jargon and help citizens self-enumerate, eliminating confusion.
 3. **Smart Localization**: GPS-powered State Schedule dashboard uses Nominatim reverse-geocoding to pinpoint field visit dates for citizens.

@@ -16,7 +16,7 @@ export default function LegalTerms() {
           Legal & Privacy Framework
         </h1>
         <p className="text-lg text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
-          Understanding the Census Act, 1948 and important context regarding this prototype application.
+          Understanding the Census Act, 1948 and important context regarding this application.
         </p>
       </div>
 
@@ -32,28 +32,28 @@ export default function LegalTerms() {
 
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-2 shadow-sm">
-            <h3 className="font-bold text-slate-900 text-lg">Section 8 — The legal duty to answer</h3>
+            <h3 className="font-bold text-slate-900 text-lg">Section 8 - The legal duty to answer</h3>
             <p className="text-slate-600 text-sm leading-relaxed">
               Citizens are legally bound to answer census questions to the best of their knowledge and belief.
             </p>
           </div>
 
           <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-2 shadow-sm">
-            <h3 className="font-bold text-slate-900 text-lg">Section 9 — Reasonable access</h3>
+            <h3 className="font-bold text-slate-900 text-lg">Section 9 - Reasonable access</h3>
             <p className="text-slate-600 text-sm leading-relaxed">
               A census officer has a legal right to reasonable access to a residence for enumeration purposes.
             </p>
           </div>
 
           <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-2 shadow-sm">
-            <h3 className="font-bold text-slate-900 text-lg">Section 10 — Filling the schedule</h3>
+            <h3 className="font-bold text-slate-900 text-lg">Section 10 - Filling the schedule</h3>
             <p className="text-slate-600 text-sm leading-relaxed">
               Citizens have a duty to fill in a census schedule when required to do so by an authorized officer.
             </p>
           </div>
 
           <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-2 shadow-sm">
-            <h3 className="font-bold text-slate-900 text-lg">Section 11 — Penalties</h3>
+            <h3 className="font-bold text-slate-900 text-lg">Section 11 - Penalties</h3>
             <p className="text-slate-600 text-sm leading-relaxed">
               Refusing to answer or knowingly giving a false answer is punishable with a fine of up to ₹1,000. Census officers who neglect their duties, ask improper questions, falsify returns, or disclose information without authorization face separate penalties, including up to three years' imprisonment for certain offences.
             </p>
@@ -62,7 +62,7 @@ export default function LegalTerms() {
 
         <div className="bg-indigo-50 p-6 rounded-2xl border border-indigo-200 mt-6 shadow-sm">
           <h3 className="font-bold text-indigo-900 flex items-center gap-2 text-lg mb-3">
-            <Lock className="w-5 h-5 text-indigo-700" /> Section 15 — Confidentiality
+            <Lock className="w-5 h-5 text-indigo-700" /> Section 15 - Confidentiality
           </h3>
           <p className="text-indigo-800 text-sm font-medium leading-relaxed">
             Answers cannot be disclosed under the RTI Act, used as evidence in any court, or shared with any other department or institution. They are used exclusively to build aggregate statistics.
@@ -73,14 +73,14 @@ export default function LegalTerms() {
       <div className="space-y-6 pt-8">
         <div className="flex items-center gap-4 border-b border-slate-200 pb-4">
           <AlertTriangle className="w-8 h-8 text-amber-600 shrink-0" />
-          <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">About this prototype</h2>
+          <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">About this application</h2>
         </div>
 
         <div className="bg-white p-8 rounded-2xl border border-slate-200 space-y-6 shadow-sm">
           <ul className="space-y-4 text-sm text-slate-700 font-medium">
             <li className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-              <span>This is an unofficial hackathon build for PromptWars x ADYPU, and is <strong>not affiliated with or endorsed by</strong> the Government of India, the Office of the Registrar General & Census Commissioner, India (ORGI), or the Ministry of Home Affairs.</span>
+              <span>This is an unofficial build and is <strong>not affiliated with or endorsed by</strong> the Government of India, the Office of the Registrar General & Census Commissioner, India (ORGI), or the Ministry of Home Affairs.</span>
             </li>
             <li className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
@@ -94,7 +94,7 @@ export default function LegalTerms() {
 
           <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
             <p className="text-sm text-slate-600 font-medium leading-relaxed">
-              If you spot any inaccurate content or have concerns about this prototype, please contact the project maintainers via our repository issue tracker to have it corrected.
+              If you spot any inaccurate content or have concerns about this application, please contact the project maintainers via our repository issue tracker to have it corrected.
             </p>
           </div>
         </div>
