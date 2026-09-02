@@ -7,6 +7,7 @@ import VoiceAssistant from './components/VoiceAssistant';
 import BhashiniLanguageBar from './components/BhashiniLanguageBar';
 import GlobalChatbot from './components/GlobalChatbot';
 import Navigation from './components/Navigation';
+import AccessibilityBar from './components/AccessibilityBar';
 
 const PhaseTwo = React.lazy(() => import('./pages/PhaseTwo'));
 const StateSchedule = React.lazy(() => import('./pages/StateSchedule'));
@@ -34,7 +35,8 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen flex flex-col font-sans bg-slate-50 text-slate-900 transition-colors duration-200">
+      <div className="min-h-screen flex flex-col font-sans bg-slate-50 text-slate-900 transition-colors duration-200" dir={i18n.dir()}>
+        <AccessibilityBar />
         
         <div className="print:hidden bg-amber-50 text-amber-900 px-4 py-2 text-sm flex items-start sm:items-center justify-center gap-2 border-b border-amber-200">
           <AlertCircle className="w-5 h-5 shrink-0 mt-0.5 sm:mt-0" />

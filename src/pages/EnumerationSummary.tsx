@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Download, Info, CheckCircle2, QrCode } from 'lucide-react';
+import { ArrowLeft, Download, Info, CheckCircle2, QrCode, MessageCircle } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 
 export default function EnumerationSummary() {
@@ -43,9 +43,14 @@ export default function EnumerationSummary() {
         <Link to="/self-enumeration" className="flex items-center gap-2 text-slate-600 font-semibold hover:text-slate-900 transition-colors duration-150">
           <ArrowLeft className="w-5 h-5" /> Back to Wizard
         </Link>
-        <button onClick={handleDownload} className="flex items-center gap-2 bg-slate-950 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl font-semibold transition-colors duration-150">
-          <Download className="w-4 h-4" /> Save as PDF
-        </button>
+        <div className="flex items-center gap-3">
+          <button onClick={handleDownload} className="flex items-center gap-2 bg-slate-950 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl font-semibold transition-colors duration-150">
+            <Download className="w-4 h-4" /> Save as PDF
+          </button>
+          <a href={`https://wa.me/?text=${encodeURIComponent("Here is my Digital Census 2027 SE ID: " + data.seId)}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white px-5 py-2.5 rounded-xl font-semibold transition-colors duration-150">
+            <MessageCircle className="w-4 h-4" /> WhatsApp
+          </a>
+        </div>
       </div>
 
       <div className="print:hidden space-y-4 mb-12">

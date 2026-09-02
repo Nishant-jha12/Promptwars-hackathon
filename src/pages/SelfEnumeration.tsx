@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { QRCodeSVG } from 'qrcode.react';
 import confetti from 'canvas-confetti';
-import { ShieldAlert, CheckCircle, Info, MessageSquareText, Search, Database, Check } from 'lucide-react';
+import { ShieldAlert, CheckCircle, Info, MessageSquareText, Search, Database, Check, Volume2, Smartphone, RefreshCw, CheckCircle2 } from 'lucide-react';
 import clsx from 'clsx';
 import { db } from '../firebase';
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
@@ -13,6 +13,7 @@ export default function SelfEnumeration() {
   const [step, setStep] = useState(1);
   const [seId, setSeId] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'wizard' | 'verify'>('wizard');
+  const [isDigiLockerLoading, setIsDigiLockerLoading] = useState(false);
 
   const [lookupId, setLookupId] = useState('');
   const [lookupResult, setLookupResult] = useState<{status: 'idle' | 'loading' | 'found' | 'not_found', data?: any}>({ status: 'idle' });
@@ -30,6 +31,31 @@ export default function SelfEnumeration() {
     memberCount: '1',
     caste: ''
   });
+
+  const handleDigiLockerFetch = () => {
+    setIsDigiLockerLoading(true);
+    setTimeout(() => {
+      setFormData({
+        state: 'Maharashtra',
+        ownership: 'Owned (Freehold)',
+        roofMaterial: 'Concrete (RCC)',
+        waterSource: 'Treated Piped Water',
+        memberCount: '4',
+        caste: 'Self-Declared / Phase II'
+      });
+      setIsDigiLockerLoading(false);
+      setStep(3);
+    }, 1500);
+  };
+
+  const speakText = (text: string) => {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = i18n.language === 'hi' ? 'hi-IN' : 'en-IN';
+      window.speechSynthesis.speak(utterance);
+    }
+  };
 
   const generateSeId = async () => {
     const num = Math.floor(1000000000 + Math.random() * 9000000000).toString();
@@ -216,7 +242,30 @@ export default function SelfEnumeration() {
             <div className="bg-white p-8 rounded-2xl border border-slate-200">
               {step === 1 && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-bold text-slate-900">{t('h2_building', "Household & Building Details")}</h2>
+                  <div className="bg-indigo-50 border border-indigo-200 p-6 rounded-2xl mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                      <h3 className="text-indigo-900 font-bold flex items-center gap-2 text-lg">
+                        <Smartphone className="w-5 h-5" /> Auto-fill via DigiLocker
+                      </h3>
+                      <p className="text-indigo-700 text-sm mt-1">Save time by fetching your verified family details securely.</p>
+                    </div>
+                    <button 
+                      type="button" 
+                      onClick={handleDigiLockerFetch}
+                      disabled={isDigiLockerLoading}
+                      className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-xl font-semibold shadow-sm transition-all whitespace-nowrap flex items-center gap-2 disabled:opacity-70"
+                    >
+                      {isDigiLockerLoading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
+                      {isDigiLockerLoading ? 'Connecting...' : 'Fetch Details'}
+                    </button>
+                  </div>
+
+                  <h2 className="text-xl font-bold text-slate-900 flex items-center justify-between">
+                    {t('h2_building', "Household & Building Details")}
+                    <button type="button" onClick={() => speakText("Household and building details. Please fill out your state, ownership status, and roof material.")} className="text-slate-400 hover:text-indigo-600 transition-colors" title="Read section aloud">
+                      <Volume2 className="w-5 h-5" />
+                    </button>
+                  </h2>
                   
                   <div className="space-y-4">
                     <div>

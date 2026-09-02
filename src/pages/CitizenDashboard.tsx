@@ -16,7 +16,8 @@ import {
   Clock, 
   Sparkles,
   ExternalLink,
-  ArrowRight
+  ArrowRight,
+  MessageCircle
 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 
@@ -552,12 +553,22 @@ export default function CitizenDashboard() {
                 <p className="text-slate-500 font-medium pt-2">Kothrud, Pune, Maharashtra</p>
               </div>
 
-              <button
-                onClick={() => window.print()}
-                className="print:hidden w-full bg-slate-950 hover:bg-slate-800 text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors duration-150"
-              >
-                <Download className="w-5 h-5" /> Download / Print Digital Pass
-              </button>
+              <div className="print:hidden space-y-3 w-full">
+                <button
+                  onClick={() => window.print()}
+                  className="w-full bg-slate-950 hover:bg-slate-800 text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors duration-150"
+                >
+                  <Download className="w-5 h-5" /> Download / Print Digital Pass
+                </button>
+                <a
+                  href={`https://wa.me/?text=${encodeURIComponent("Hello! My Official Digital Census 2027 SE ID is: H8492019482. My enumerator visit is scheduled for Phase II (Feb 2027). Verified via Gov.in portal.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors duration-150"
+                >
+                  <MessageCircle className="w-5 h-5" /> Send Pass to WhatsApp
+                </a>
+              </div>
             </div>
           )}
 
