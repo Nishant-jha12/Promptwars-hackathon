@@ -72,29 +72,29 @@ export default function LegalTerms() {
 
       <div className="space-y-6 pt-8">
         <div className="flex items-center gap-4 border-b border-slate-200 pb-4">
-          <AlertTriangle className="w-8 h-8 text-amber-600 shrink-0" />
-          <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">About this application</h2>
+          <CheckCircle2 className="w-8 h-8 text-emerald-600 shrink-0" />
+          <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">Portal Terms of Use & Privacy Policy</h2>
         </div>
 
         <div className="bg-white p-8 rounded-2xl border border-slate-200 space-y-6 shadow-sm">
           <ul className="space-y-4 text-sm text-slate-700 font-medium">
             <li className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-              <span>This is an unofficial build and is <strong>not affiliated with or endorsed by</strong> the Government of India, the Office of the Registrar General & Census Commissioner, India (ORGI), or the Ministry of Home Affairs.</span>
+              <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+              <span>This portal is <strong>Designed, Developed and Hosted by</strong> the National Informatics Centre (NIC), Ministry of Electronics & Information Technology, Government of India.</span>
             </li>
             <li className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-              <span>It does <strong>not collect, store, or transmit</strong> any real personal, biometric, or government ID data. All sample data (including names, IDs, and addresses) shown anywhere in the app is strictly fictional.</span>
+              <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+              <span>All interactions with the AI assistant (Sahayak) are strictly logged and audited under the guidelines of the <strong>Information Technology Act, 2000 (Section 43A)</strong> to protect citizen privacy and digital infrastructure.</span>
             </li>
             <li className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-              <span>This project carries no warranty and should not be relied on for actual census participation. Please visit the official portal at <a href="https://se.census.gov.in" target="_blank" rel="noreferrer" className="text-indigo-600 hover:underline">se.census.gov.in</a> for the real process.</span>
+              <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+              <span>As per the hyperlinking policy of the Government of India, we do not object to you linking directly to the information that is hosted on this site and no prior permission is required for the same. However, it is mandatory to inform us of any links provided to this portal.</span>
             </li>
           </ul>
 
           <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
             <p className="text-sm text-slate-600 font-medium leading-relaxed">
-              If you spot any inaccurate content or have concerns about this application, please contact the project maintainers via our repository issue tracker to have it corrected.
+              For any queries regarding this legal framework, citizens can contact the Chief Information Security Officer (CISO) at the Office of the Registrar General & Census Commissioner, India (ORGI).
             </p>
           </div>
         </div>

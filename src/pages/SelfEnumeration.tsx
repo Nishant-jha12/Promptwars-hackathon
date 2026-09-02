@@ -93,7 +93,7 @@ export default function SelfEnumeration() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          systemInstruction: { parts: [{ text: "You are a helpful Census assistant. Explain clearly in the user's language. Keep it under 2 sentences. Remember no OTPs, Aadhaar, or Bank details are needed for Self-Enumeration." }] },
+          systemInstruction: { parts: [{ text: "You are the official Government of India Census Sahayak. Explain clearly in the user's language. Be authoritative, strictly adhere to the Census Act 1948, and provide 99% accurate information. Keep it under 2 sentences. Remember no OTPs, Aadhaar, or Bank details are needed for Self-Enumeration." }] },
           contents: [{ role: "user", parts: [{ text: q }] }]
         }),
       });

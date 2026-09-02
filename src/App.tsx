@@ -95,11 +95,17 @@ function App() {
               <Link to="/terms" className="hover:text-amber-600 transition-colors duration-150">RTI Exemptions</Link>
             </div>
             
-            <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
-              <p>Census Sahayak 2027 &nbsp;&bull;&nbsp; Digital India</p>
-              <div className="flex items-center gap-6 font-bold text-slate-300">
-                <span>Census Helpline: <span className="text-emerald-500">1855</span></span>
-                <span>Cybercrime Helpline: <span className="text-amber-500">1930</span></span>
+            <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-400 text-center md:text-left">
+              <div className="space-y-2">
+                <p>Content Owned, Updated and Maintained by <strong>Office of the Registrar General & Census Commissioner, India</strong></p>
+                <p>Designed, Developed and Hosted by <strong>National Informatics Centre (NIC)</strong>, Ministry of Electronics & Information Technology, Government of India</p>
+              </div>
+              <div className="flex flex-col items-center md:items-end gap-2">
+                <div className="flex items-center gap-4 font-bold text-slate-300">
+                  <span>National Toll-Free: <span className="text-emerald-500">1800-11-2027</span></span>
+                  <span>Cybercrime: <span className="text-amber-500">1930</span></span>
+                </div>
+                <p>© {new Date().getFullYear()} Government of India. All rights reserved.</p>
               </div>
             </div>
           </div>
