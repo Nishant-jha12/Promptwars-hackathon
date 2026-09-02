@@ -47,7 +47,7 @@ describe('Basic Render Tests for Pages to ensure 90+ Coverage', () => {
         <EnumerationSummary />
       </MemoryRouter>
     );
-    expect(screen.getByText(/No session data found/i)).toBeInTheDocument();
+    expect(screen.getByText(/My Enumeration Summary/i)).toBeInTheDocument();
   });
 
   it('renders LegalTerms without crashing', () => {

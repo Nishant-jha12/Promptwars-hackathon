@@ -10,7 +10,7 @@ export default function BhashiniLanguageBar() {
     <div className="print:hidden bg-white border border-slate-200 rounded-2xl p-6 mb-8">
       <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-6">
         
-        <div className="flex flex-wrap items-center gap-2 flex-1">
+        <div className="flex items-center gap-2 flex-1 overflow-x-auto pb-2">
           {SUPPORTED_LANGUAGES.map((lang) => {
             const isSelected = i18n.language === lang.code;
             return (
@@ -20,7 +20,7 @@ export default function BhashiniLanguageBar() {
                 title={`${lang.englishName} (${lang.nativeName})`}
                 aria-label={`Switch to ${lang.englishName}`}
                 className={clsx(
-                  "text-sm px-3 py-1.5 rounded-full border transition-colors duration-150 font-semibold select-none focus:outline-none focus:ring-2 focus:ring-amber-600",
+                  "text-sm px-3 py-1.5 rounded-full border transition-colors duration-150 font-semibold select-none focus:outline-none focus:ring-2 focus:ring-amber-600 whitespace-nowrap shrink-0",
                   isSelected
                     ? "bg-amber-600 text-white border-amber-600"
                     : "bg-slate-50 text-slate-600 border-slate-200 hover:border-slate-400 hover:text-slate-900 hover:bg-slate-100"

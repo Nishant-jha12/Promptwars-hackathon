@@ -44,7 +44,7 @@ export default function GlobalChatbot() {
     return () => window.removeEventListener('sahayak-ask', handleVoiceAsk);
   }, [messages]); // need messages in deps or use functional update, wait handleSend needs latest state? Actually we'll use functional updates for messages.
   
-  const defaultKey = (import.meta as any).env.VITE_GEMINI_API_KEY || '';
+  const defaultKey = (import.meta as any).env.VITE_GEMINI_API_KEY || "";
   const [apiKey, setApiKey] = useState(localStorage.getItem('gemini_api_key') || defaultKey);
   const [showKeyInput, setShowKeyInput] = useState(false);
 

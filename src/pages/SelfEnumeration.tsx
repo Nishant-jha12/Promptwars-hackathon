@@ -88,15 +88,18 @@ export default function SelfEnumeration() {
     setLoading(true);
     setAssistantOpen(true);
     try {
-      const res = await fetch('/api/chat', {
+      const apiKey = (import.meta as any).env.VITE_GEMINI_API_KEY || localStorage.getItem('gemini_api_key') || "";
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          prompt: `User asked: "${q}". Explain this clearly in ${i18n.language}. Keep it under 2 sentences. Remember no OTPs, Aadhaar, or Bank details are needed for Self-Enumeration.`,
+          systemInstruction: { parts: [{ text: "You are a helpful Census assistant. Explain clearly in the user's language. Keep it under 2 sentences. Remember no OTPs, Aadhaar, or Bank details are needed for Self-Enumeration." }] },
+          contents: [{ role: "user", parts: [{ text: q }] }]
         }),
       });
       const data = await res.json();
-      setAssistantReply(data.text || "I'm sorry, I couldn't connect to the AI service.");
+      const replyText = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I couldn't connect to the AI service.";
+      setAssistantReply(replyText);
     } catch (e) {
       setAssistantReply("Currently in offline mode. For Self-Enumeration, you only need to provide basic household and member demographic details. No documents are required.");
     }
