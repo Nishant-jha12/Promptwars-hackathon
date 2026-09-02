@@ -115,7 +115,7 @@ export default function SelfEnumeration() {
     setAssistantOpen(true);
     try {
       const apiKey = (import.meta as any).env.VITE_GEMINI_API_KEY || localStorage.getItem('gemini_api_key') || atob("QVEuQWI4Uk42SnUtaE04c2d5aHNGOHYweXJYUHliTGwwc2g0NUNhTEhGQ0dXQnVvUzZUUHc=");
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`, {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
