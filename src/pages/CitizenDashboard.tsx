@@ -14,7 +14,9 @@ import {
   LogOut, 
   Download, 
   Clock, 
-  Sparkles
+  Sparkles,
+  ExternalLink,
+  ArrowRight
 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 
@@ -342,9 +344,42 @@ export default function CitizenDashboard() {
                     </div>
                     <div>
                       <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1">Digital Geo-Coordinates</span>
-                      <span className="font-mono text-sm bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 inline-block text-slate-700 font-medium">
-                        {DEMO_CITIZEN.geoTag}
-                      </span>
+                      <div className="flex flex-col gap-3">
+                        <span className="font-mono text-sm bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 inline-block text-slate-700 font-medium">
+                          {DEMO_CITIZEN.geoTag}
+                        </span>
+                        
+                        <div className="w-full h-48 rounded-xl overflow-hidden border border-slate-200 relative group mt-1">
+                          <iframe 
+                            title="Property Geo-Location Map"
+                            className="w-full h-full"
+                            src="https://maps.google.com/maps?q=18.5074,73.8077&z=15&output=embed"
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                          ></iframe>
+                          <a 
+                            href="https://www.google.com/maps/search/?api=1&query=18.5074,73.8077"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="absolute inset-0 bg-slate-900/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-[2px]"
+                            aria-label="Open pinpoint location in Google Maps"
+                          >
+                            <span className="bg-white text-slate-900 px-4 py-2.5 rounded-xl font-bold flex items-center gap-2 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-all duration-200">
+                              <ExternalLink className="w-4 h-4 text-amber-600" /> Open in Google Maps
+                            </span>
+                          </a>
+                        </div>
+                        <div className="text-right">
+                          <a 
+                            href="https://www.google.com/maps/search/?api=1&query=18.5074,73.8077"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-indigo-600 hover:text-indigo-800 text-sm font-bold flex items-center justify-end gap-1.5 transition-colors"
+                          >
+                            View exact plot location <ArrowRight className="w-4 h-4" />
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
