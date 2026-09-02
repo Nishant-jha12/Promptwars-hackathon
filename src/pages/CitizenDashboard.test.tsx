@@ -28,8 +28,8 @@ describe('CitizenDashboard Component', () => {
     expect(screen.getByText(/Geo-Tagged Residential Building/i)).toBeInTheDocument();
     
     // Switch tabs to boost coverage
-    fireEvent.click(screen.getByText(/Privacy Settings/i));
-    fireEvent.click(screen.getByText(/Official Certificate/i));
+    fireEvent.click(screen.getByRole('button', { name: /Data Privacy/i }));
+    fireEvent.click(screen.getByRole('button', { name: /Official Census Pass/i }));
     
     // Logout
     const logoutBtn = screen.getByText(/Logout/i);

@@ -13,4 +13,15 @@ export default defineConfig({
       }
     }
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          recharts: ['recharts'],
+          firebase: ['firebase/app', 'firebase/firestore']
+        }
+      }
+    }
+  }
 });
