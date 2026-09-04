@@ -91,17 +91,35 @@ export default function GlobalChatbot() {
           parts: [{ text: m.text }]
         }));
 
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:generateContent?key=${apiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: systemInstruction }] },
-          contents: contents
-        }),
-      });
+      let res;
+      let retries = 3;
+      let delay = 1000;
       
-      if (!res.ok) {
-        throw new Error(`API returned ${res.status}`);
+      while (retries > 0) {
+        try {
+          res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:generateContent?key=${apiKey}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              systemInstruction: { parts: [{ text: systemInstruction }] },
+              contents: contents
+            }),
+          });
+          
+          if (res.ok) break;
+          if (res.status !== 503 && res.status !== 429) {
+            throw new Error(`API returned ${res.status}`);
+          }
+        } catch (err) {
+          if (retries === 1) throw err;
+        }
+        retries--;
+        await new Promise(r => setTimeout(r, delay));
+        delay *= 2;
+      }
+      
+      if (!res || !res.ok) {
+        throw new Error(`API returned ${res?.status}`);
       }
 
       const data = await res.json();

@@ -115,14 +115,36 @@ export default function SelfEnumeration() {
     setAssistantOpen(true);
     try {
       const apiKey = (import.meta as any).env.VITE_GEMINI_API_KEY || localStorage.getItem('gemini_api_key') || atob("QVEuQWI4Uk42SnUtaE04c2d5aHNGOHYweXJYUHliTGwwc2g0NUNhTEhGQ0dXQnVvUzZUUHc=");
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:generateContent?key=${apiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: "You are the official Government of India Census Sahayak. Explain clearly in the user's language. Be authoritative, strictly adhere to the Census Act 1948, and provide 99% accurate information. Keep it under 2 sentences. Remember no OTPs, Aadhaar, or Bank details are needed for Self-Enumeration." }] },
-          contents: [{ role: "user", parts: [{ text: q }] }]
-        }),
-      });
+      let res;
+      let retries = 3;
+      let delay = 1000;
+      
+      while (retries > 0) {
+        try {
+          res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:generateContent?key=${apiKey}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              systemInstruction: { parts: [{ text: "You are the official Government of India Census Sahayak. Explain clearly in the user's language. Be authoritative, strictly adhere to the Census Act 1948, and provide 99% accurate information. Keep it under 2 sentences. Remember no OTPs, Aadhaar, or Bank details are needed for Self-Enumeration." }] },
+              contents: [{ role: "user", parts: [{ text: q }] }]
+            }),
+          });
+          
+          if (res.ok) break;
+          if (res.status !== 503 && res.status !== 429) {
+            throw new Error(`API returned ${res.status}`);
+          }
+        } catch (err) {
+          if (retries === 1) throw err;
+        }
+        retries--;
+        await new Promise(r => setTimeout(r, delay));
+        delay *= 2;
+      }
+      
+      if (!res || !res.ok) {
+        throw new Error(`API returned ${res?.status}`);
+      }
       const data = await res.json();
       const replyText = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I couldn't connect to the AI service.";
       setAssistantReply(replyText);
